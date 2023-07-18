@@ -10,5 +10,6 @@ module.exports = {
   plugins: ['stylelint-order'],
   rules: {
     'selector-class-pattern': null,
+    'no-empty-source': null,
   },
 }

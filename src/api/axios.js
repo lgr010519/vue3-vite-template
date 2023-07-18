@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { message } from 'antd'
 import { downloadFile } from '@/utils'
+import { ElMessage } from 'element-plus'
 
 export const baseUrl = import.meta.env.VITE_APP_API_BASE_URL
 
@@ -64,11 +64,11 @@ axios.interceptors.response.use(
           // 跳转登录
           window.location.href = '/login'
         }
-        showMsg && message.error(res.data.msg)
+        showMsg && ElMessage.error(res.data.msg)
         return Promise.reject(res.data.msg)
       }
     } else {
-      showMsg && message.error('请求服务器失败！')
+      showMsg && ElMessage.error('请求服务器失败！')
       return Promise.reject('请求服务器失败！')
     }
     return res
@@ -93,7 +93,7 @@ axios.interceptors.response.use(
         }
       }
     }
-    config.showMsg && message.error(msg)
+    config.showMsg && ElMessage.error(msg)
     err.message = msg
     return Promise.reject(err)
   },

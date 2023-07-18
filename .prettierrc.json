@@ -1,5 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/prettierrc",
+  "plugins": ["prettier-plugin-tailwindcss"],
   "printWidth": 80,
   "tabWidth": 2,
   "singleQuote": true,
@@ -9,7 +10,9 @@
   "bracketSpacing": true,
   "singleAttributePerLine": true,
   "proseWrap": "never",
-  "htmlWhitespaceSensitivity": "ignore",
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "strict",
+  "vueIndentScriptAndStyle": true,
   "overrides": [
     {
       "files": ".prettierrc",

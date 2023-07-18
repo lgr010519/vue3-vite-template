@@ -121,7 +121,7 @@ https://typicode.github.io/husky/#/?id=usage
 ## 配置`Tailwind CSS`
 
 ```
-npm install -D tailwindcss postcss autoprefixer
+pnpm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
@@ -142,10 +142,10 @@ npx tailwindcss init -p
   <el-button>我是 ElButton</el-button>
 </template>
 <script>
-import { ElButton } from 'element-plus'
-export default {
-  components: { ElButton },
-}
+  import { ElButton } from 'element-plus'
+  export default {
+    components: { ElButton },
+  }
 </script>
 ```
 
