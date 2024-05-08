@@ -13,19 +13,19 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.8",
-    "element-plus": "^2.6.2",
+    "element-plus": "^2.7.2",
     "pinia": "^2.1.7",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.8.0",
+    "@rushstack/eslint-patch": "^1.10.2",
     "@vitejs/plugin-vue": "^4.6.2",
     "@vue/eslint-config-prettier": "^7.1.0",
     "autoprefixer": "^10.4.19",
-    "dayjs": "^1.11.10",
+    "dayjs": "^1.11.11",
     "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.24.0",
+    "eslint-plugin-vue": "^9.25.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
     "postcss": "^8.4.38",
@@ -33,14 +33,14 @@
     "postcss-scss": "^4.0.9",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.4.1",
-    "sass": "^1.72.0",
+    "sass": "^1.77.0",
     "stylelint": "^15.11.0",
     "stylelint-config-hudochenkov": "^9.0.0",
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.4",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.3",
     "unplugin-element-plus": "^0.7.2",
-    "vite": "^5.2.6"
+    "vite": "^5.2.11"
   }
 }
