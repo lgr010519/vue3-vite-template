@@ -1,16 +1,25 @@
 import axios from 'axios'
-import { downloadFile } from '@/utils'
+// import { downloadFile } from '@/utils'
 import { ElMessage } from 'element-plus'
+import {
+  getToken,
+  removeToken,
+  removeUserInfo,
+  setToken,
+  ssoLoginUrl,
+} from '@/utils/config'
 
-export const baseUrl = import.meta.env.VITE_APP_API_BASE_URL
+export const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 // 30秒中断请求
 axios.defaults.timeout = 30000
 
+axios.defaults.baseURL = baseUrl
+
 // 拦截发送请求
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token')
+    const token = getToken()
     token && (config.headers.Authorization = 'Bearer ' + token)
     return config
   },
@@ -28,7 +37,7 @@ axios.interceptors.response.use(
       let token
       if (res.headers && res.headers.authorization) {
         token = res.headers.authorization
-        localStorage.setItem('token', token)
+        setToken(token)
       }
 
       // 导出下载文件的情况 返回格式为blob 并且 非JSON格式 (当为blob时，data直接就是一个blob，不会是一个标准接口返回格式)
@@ -37,16 +46,16 @@ axios.interceptors.response.use(
         responseType === 'blob' &&
         !Object.prototype.hasOwnProperty.call(res.data, 'code')
       ) {
-        const contentDisposition = res.headers.get('content-disposition')
-        const fileNameOriginal = contentDisposition
-          .split(';')[1]
-          .trim()
-          .replace(/^filename=/, '')
-        const fileName = fileNameOriginal
-          ? decodeURIComponent(fileNameOriginal)
-          : 'download'
+        // const contentDisposition = res.headers.get('content-disposition')
+        // const fileNameOriginal = contentDisposition
+        //   .split(';')[1]
+        //   .trim()
+        //   .replace(/^filename=/, '')
+        // const fileName = fileNameOriginal
+        //   ? decodeURIComponent(fileNameOriginal)
+        //   : 'download'
         // 下载文件
-        downloadFile(res.data, fileName)
+        // downloadFile(res.data, fileName)
         return res
       }
 
@@ -58,11 +67,11 @@ axios.interceptors.response.use(
           res.data.code === 10117
         ) {
           // token失效
-          localStorage.removeItem('token')
+          removeToken()
           // 清空用户信息
-          localStorage.removeItem('userInfo')
+          removeUserInfo()
           // 跳转登录
-          window.location.href = '/login'
+          window.location.href = ssoLoginUrl
         }
         showMsg && ElMessage.error(res.data.msg)
         return Promise.reject(res.data.msg)
@@ -85,11 +94,11 @@ axios.interceptors.response.use(
         }
         if (data.code === 10127 || data.code === 10126 || data.code === 10117) {
           // token失效
-          localStorage.removeItem('token')
+          removeToken()
           // 清空用户信息
-          localStorage.removeItem('userInfo')
+          removeUserInfo()
           // 跳转登录
-          window.location.href = '/login'
+          window.location.href = ssoLoginUrl
         }
       }
     }
