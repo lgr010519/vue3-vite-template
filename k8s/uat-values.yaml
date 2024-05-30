@@ -1,0 +1,23 @@
+replicaCount: 1
+imagePullSecrets:
+  - name: harbor-secret
+service:
+  port: 80
+ingress:
+  enabled: true
+  hosts:
+    - host: keqiyun-web.uat.youpin-k8s.net
+      paths:
+        - path: /
+configMap:
+  env:
+    WEBAPP_ENV.K8S_APP_ENVIRONMENT: ONLINE
+    WEBAPP_ENV.K8S_APP_API_BASE_URL: https://keqiyun-service.uat.youpin-k8s.net
+    WEBAPP_ENV.K8S_APP_GEO_JSON_BASE: https://oss.youpin-k8s.net/shared-space/geo-json/100000
+resources:
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi

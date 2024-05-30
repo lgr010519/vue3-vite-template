@@ -1,0 +1,10 @@
+name: keqiyun-web
+version: 0.1.0
+description: 泛科技型企业网web
+group: js-repos
+pipeline: web-spec
+build:
+  image: registry.youpin-k8s.net/base-repos/node16:0.1.0.2-test
+  commands:
+    - pnpm install --registry=http://maven.youpin-k8s.net/repository/npm/
+    - pnpm run build

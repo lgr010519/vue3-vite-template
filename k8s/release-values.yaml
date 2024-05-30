@@ -1,0 +1,21 @@
+replicaCount: 1
+service:
+  port: 80
+ingress:
+  enabled: true
+  hosts:
+    - host:
+      paths:
+        - path: /
+configMap:
+  env:
+    WEBAPP_ENV.K8S_APP_ENVIRONMENT: ONLINE
+    WEBAPP_ENV.K8S_APP_API_BASE_URL: https://enterprise-cloud-service.yoyohr.com
+    WEBAPP_ENV.K8S_APP_GEO_JSON_BASE: https://shared-spaces.yoyohr.com/geo-json/100000
+resources:
+  limits:
+    cpu: 50m
+    memory: 50Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
